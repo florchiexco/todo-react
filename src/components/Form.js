@@ -1,42 +1,28 @@
 import React from "react";
 
-export default class Form extends React.Component{
-    constructor(props){
-        super(props);
-    }
+export default class Form extends React.Component {
 
-
-    createNewTask= () => {
-        let titulo= document.getElementById("titulo").value;
-        let descripcion= document.getElementById("descripcion").value;
-        let newTask= {id: 4, name: titulo, descripcion: descripcion, done:false}
-        return newTask;
-
-    }
-
-    sendNewTask= (e) => {
-        let newTask= this.createNewTask();
-        e.preventDefault();
-        console.log(newTask);
-        //this.props.onSendNewTask(this.props);    
-    }
-
-    render(){
-      return(
-        <form>
-        <h2>Crear nueva tarea</h2>
-            <div className="card border-success mb-3">
-                <div className="card-body text-success">
-                    <h5 className="card-title">Escriba el titulo de su tarea: </h5>
-                    <input type="text" className="form-control" placeholder="Titulo de su tarea" id="titulo"></input>
-                    <br></br>
-                    <h5 className="card-title">Escriba la descripción de su tarea: </h5>
-                    <textarea className="form-control" placeholder="Descripción de su tarea" id="descripcion"></textarea>
-                    <br></br>
-                    <button className="btn btn-outline-success" onClick={this.sendNewTask}>Enviar</button>
-                </div>
+  render() {
+    const { onChange, onSubmit, form } = this.props
+    return (
+      <div className="card border-danger mb-3">
+        <div className="card-header">
+          Ingresar nueva tarea a la lista
+        </div>
+        <div className="card-body">
+          <form onSubmit={ onSubmit } >
+            <div className="form-group">
+              <label htmlFor="exampleInputTitle">Título</label>
+              <input type="text" className="form-control" name="name" value={ form.name } onChange={ onChange }></input>
             </div>
-        </form>
-        )
-    }
+            <div className="form-group">
+              <label htmlFor="description">Descripción</label>
+              <textarea className="form-control" name="description" value={ form.description } onChange={ onChange }></textarea>
+            </div>
+            <button type="submit" className="btn btn-danger">Enviar</button>
+          </form>
+        </div>
+      </div>
+    )
+  }
 }

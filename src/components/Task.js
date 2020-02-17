@@ -5,12 +5,6 @@ export default class Task extends React.Component{
         super(props);
     }
 
-    changeStatus= () => {
-        this.props.onChangeState(this.props.task);
-    }
-
-
-
     render(){
         const {name, description, id}= this.props.task;
         return (
@@ -22,7 +16,8 @@ export default class Task extends React.Component{
                 <div className="card-body text-danger">
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text">{description}</p>
-                    <button className="btn btn-outline-danger" onClick={this.changeStatus}>Done</button>
+                    <button className="btn btn-outline-success" onClick={()=> this.props.onChangeState()}>Tarea completada</button>
+                    <button className="btn btn-outline-warning" onClick={()=> this.props.onEditTask()}>Editar</button>
                 </div>
             </div>
           </>
