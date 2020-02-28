@@ -1,9 +1,6 @@
 import React from "react";
 
-export default class Form extends React.Component {
-
-  render() {
-    const { onChange, onSubmit, form } = this.props
+const Form = ({onChange, onSubmit, form})=>  {
     return (
       <div className="card border-danger mb-3">
         <div className="card-header">
@@ -20,9 +17,10 @@ export default class Form extends React.Component {
               <textarea className="form-control" name="description" value={ form.description } onChange={ onChange }></textarea>
             </div>
             <button type="submit" className="btn btn-danger">Enviar</button>
-          </form>
+            </form>
         </div>
       </div>
     )
   }
-}
+
+  export default Form;
